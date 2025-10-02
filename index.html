@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Снегурочка 2025 — пригласите праздник</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1320;
+      --accent:#9be7ff;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:16px;
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071122 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:32px;
+    }
+
+    /* layout */
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .brand{font-family:'Playfair Display';font-size:20px;font-weight:700;letter-spacing:0.2px}
+    nav{display:flex;gap:14px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;transition:all 220ms ease}
+    nav a:hover{color:var(--accent);background:var(--glass)}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;margin-top:28px}
+    .hero-left{padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:20px;backdrop-filter:blur(6px);border:1px solid var(--glass-border)}
+    .kicker{color:var(--accent);text-transform:uppercase;font-weight:800;letter-spacing:1px;font-size:12px}
+    h1{margin:10px 0 6px;font-size:40px;line-height:1.02}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    .actions{display:flex;gap:12px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#7fd3ff);color:#042b35}
+    .btn-ghost{background:transparent;border:1px solid var(--glass-border);color:var(--accent)}
+
+    /* card */
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--glass-border);}
+    .meta{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#234,#456);display:flex;align-items:center;justify-content:center;font-weight:800}
+
+    /* right column: gallery placeholder */
+    .gallery{display:grid;gap:12px}
+    .photo{height:120px;border-radius:12px;background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.1));border:1px dashed rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .photo.big{height:260px}
+
+    /* packages */
+    .packages{display:flex;gap:12px;margin-top:18px}
+    .pkg{flex:1;padding:16px;border-radius:12px;background:linear-gradient(180deg,var(--glass),transparent);border:1px solid var(--glass-border)}
+    .pkg h4{margin:0 0 8px}
+    .price{font-size:20px;font-weight:800;color:var(--accent)}
+    .pkg ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+
+    /* contact */
+    .contact{margin-top:20px;display:flex;gap:12px;align-items:center}
+    .contact a{color:var(--muted);text-decoration:none}
+
+    /* footer */
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* mobile */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+      .mobile-nav{display:flex}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+
+    /* simple animations */
+    .floating{animation:floating 6s ease-in-out infinite}
+    @keyframes floating{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    /* subtle snow */
+    .snow{pointer-events:none;position:fixed;inset:0;z-index:0;}
+    .flake{position:absolute;top:-10vh;font-size:12px;opacity:0.9;animation:fall linear infinite}
+    @keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:0}10%{opacity:0.9}100%{transform:translateY(110vh) rotate(360deg);opacity:0.6}}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#44d7ff,#8ce7ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042b35">С</div>
+        <div>
+          <div class="brand">Снегурочка 2025</div>
+          <div class="muted" style="font-size:12px">Праздник без компромиссов</div>
+        </div>
+      </div>
+      <nav aria-label="Основная навигация">
+        <a href="#about">О себе</a>
+        <a href="#services">Услуги</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#prices">Цена</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <div class="mobile-nav hidden">
+        <button id="menuBtn" class="btn btn-ghost">Меню</button>
+      </div>
+    </header>
+
+    <main class="hero" role="main">
+      <section class="hero-left card floating">
+        <div class="kicker">Выезд на праздник</div>
+        <h1>Снегурочка 2025<br><span style="font-weight:500;color:var(--muted);font-size:20px">тепло в душе, холод на щечках</span></h1>
+        <p class="lead">Современная Снегурочка для детских утренников и взрослых вечеринок. Анимации, шоу, конкурсы и аккуратные подарки — без неловких пауз и скучных тостов.</p>
+
+        <div class="meta" style="margin-top:14px">
+          <div class="avatar">SG</div>
+          <div>
+            <div style="font-weight:700">Сделаем праздник?</div>
+            <div class="muted" style="font-size:13px">Работаем по Москве и области</div>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:18px">
+          <a class="btn btn-primary" href="#contact">Заказать</a>
+          <a class="btn btn-ghost" href="#prices">Посмотреть цены</a>
+        </div>
+
+        <div class="packages" id="prices">
+          <div class="pkg">
+            <h4>Мини</h4>
+            <div class="price">3 500 ₽</div>
+            <ul>
+              <li>15 минут поздравлений</li>
+              <li>Фотосессия с детьми</li>
+              <li>Подарок — мягкая игрушка</li>
+            </ul>
+          </div>
+          <div class="pkg">
+            <h4>Стандарт</h4>
+            <div class="price">6 500 ₽</div>
+            <ul>
+              <li>30 минут шоу и конкурсов</li>
+              <li>Песни, игры, танцы</li>
+              <li>Индивидуальный подарок</li>
+            </ul>
+          </div>
+          <div class="pkg">
+            <h4>Премиум</h4>
+            <div class="price">11 000 ₽</div>
+            <ul>
+              <li>60 минут праздника</li>
+              <li>Интерактивное представление</li>
+              <li>Фотозона и до 3 подарков</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="contact" class="contact">
+          <div>
+            <div style="font-weight:700">Контакты</div>
+            <div class="muted">Тел: <a href="tel:+79260000000">+7 (926) 000-00-00</a></div>
+            <div class="muted">Почта: <a href="mailto:snegurochka2025@example.com">snegurochka2025@example.com</a></div>
+          </div>
+          <div style="margin-left:auto;text-align:right">
+            <div class="muted" style="font-size:13px">График: ежедневно 09:00 — 20:00</div>
+            <a class="muted" href="#" id="whatsappLink">Написать в мессенджер</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="gallery">
+        <div class="card photo big" id="mainPhoto">Здесь место под фото (пример)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="card photo">Фото 1</div>
+          <div class="card photo">Фото 2</div>
+        </div>
+        <div class="card photo">Видео / клип</div>
+      </aside>
+    </main>
+
+    <section id="about" style="margin-top:26px" class="card">
+      <h3>О Снегурочке</h3>
+      <p class="muted">Я — современная Снегурочка: ненавязчивая, весёлая и креативная. Работаю сама — никаких «подставных» помощников, только живое общение и качественные эмоции. Программы адаптируются под возраст и пожелания.</p>
+    </section>
+
+    <section id="services" style="margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div class="card">
+        <h4>Интерактив</h4>
+        <p class="muted">Игры, конкурсы и сценки с вовлечением всех гостей.</p>
+      </div>
+      <div class="card">
+        <h4>Музыкальное сопровождение</h4>
+        <p class="muted">Песни, фон и лёгкие аранжировки под настроение.</p>
+      </div>
+      <div class="card">
+        <h4>Фотосессия</h4>
+        <p class="muted">Короткая сессия на память + готовые снимки по запросу.</p>
+      </div>
+    </section>
+
+    <footer>
+      © Снегурочка 2025 — все права на праздничное настроение сохраняются
+    </footer>
+  </div>
+
+  <!-- decorative snow -->
+  <div class="snow" aria-hidden="true">
+    <!-- generate some flakes in JS -->
+  </div>
+
+  <script>
+    // basic interactivity
+    const menuBtn = document.getElementById('menuBtn');
+    if(menuBtn){
+      menuBtn.addEventListener('click', ()=>{
+        const nav = document.querySelector('nav');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      });
+    }
+
+    // whatsapp link quickfill (replace with real link if needed)
+    const wa = document.getElementById('whatsappLink');
+    if(wa){
+      wa.addEventListener('click',(e)=>{
+        e.preventDefault();
+        const phone = '+79260000000';
+        const text = encodeURIComponent('Здравствуйте! Хочу заказать Снегурочку. Дата: , Время: , Кол-во детей: ');
+        window.open('https://wa.me/'+phone.replace(/\D/g,'')+'?text='+text, '_blank');
+      });
+    }
+
+    // generate snowflakes
+    const snow = document.querySelector('.snow');
+    function spawnFlakes(n=18){
+      for(let i=0;i<n;i++){
+        const f = document.createElement('div');
+        f.className='flake';
+        f.style.left = Math.random()*100 + '%';
+        f.style.fontSize = (8+Math.random()*14)+'px';
+        f.style.animationDuration = (6+Math.random()*12)+'s';
+        f.style.opacity = 0.6 + Math.random()*0.4;
+        f.textContent = '❄';
+        snow.appendChild(f);
+      }
+    }
+    spawnFlakes(26);
+
+    // small accessibility: focus outline for keyboard users
+    document.addEventListener('keyup', (e)=>{
+      if(e.key === 'Tab') document.body.classList.add('user-tab');
+    });
+
+    // placeholder image click -> open file dialog to replace sample photo
+    const mainPhoto = document.getElementById('mainPhoto');
+    mainPhoto.addEventListener('click', ()=>{
+      alert('Чтобы заменить фото, откройте HTML и вставьте <img> в блок #mainPhoto или укажите путь в CSS.');
+    });
+  </script>
+</body>
+</html>
