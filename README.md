@@ -1,2 +1,0 @@
-# ioannooov.github.io
-frtsfresfrsefrsefrs
