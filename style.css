@@ -1,0 +1,650 @@
+/* --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И ОСНОВА --- */
+:root {
+    /* Цвета */
+    --bg-dark: #050B16; /* Глубокий полночный синий */
+    --color-light: #F0F8FF; /* Холодный белый */
+    --color-accent: #FF4D4D; /* Праздничный красный */
+    --color-icy: #8EDCEE; /* Ледяной голубой */
+    --color-gold: #FFD700; /* Золото */
+    
+    /* Шрифты */
+    --font-header: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    
+    --container-width: 1200px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    
+    /* Новогодний Градиентный Фон (Арктический Авангард) */
+    background:
+        radial-gradient(1000px 600px at 10% 10%, rgba(142, 220, 238, 0.12), transparent 15%),
+        radial-gradient(800px 500px at 90% 90%, rgba(255, 77, 77, 0.08), transparent 12%),
+        linear-gradient(180deg, #0f1724 0%, var(--bg-dark) 100%);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-header);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 { 
+    font-size: 2.5rem; 
+    text-align: center; 
+    margin-bottom: 40px; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); 
+}
+
+section {
+    padding: 80px 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* --- UNIQUE ELEMENT: ARCTIC SHARD (Фиксированный светящийся элемент) --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 700px;
+    background: linear-gradient(180deg, rgba(142, 220, 238, 0.4), transparent);
+    clip-path: polygon(0 0, 100% 0, 30% 100%, 0% 100%); /* Форма ледяного осколка */
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: -10;
+    animation: shardFloat 20s infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background: radial-gradient(circle at 100% 100%, rgba(255, 77, 77, 0.3), transparent 70%);
+    border-radius: 50%;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: -10;
+    animation: shardFloat 15s infinite alternate reverse;
+}
+
+@keyframes shardFloat {
+    from { transform: translate(0, 0) rotate(5deg); }
+    to { transform: translate(30px, 30px) rotate(-5deg); }
+}
+
+
+/* --- АНИМАЦИЯ СНЕГА --- */
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99; 
+}
+.snowflake {
+    position: absolute;
+    background: var(--color-light);
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0.2;
+    }
+}
+
+
+/* --- HEADER --- */
+.header {
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 22, 40, 0.7);
+    backdrop-filter: blur(10px); /* Эффект морозного стекла */
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px var(--color-icy);
+}
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+}
+
+.navigation a {
+    font-weight: 500;
+    margin-left: 30px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navigation a:hover {
+    color: var(--color-icy);
+    text-shadow: 0 0 8px var(--color-icy);
+}
+
+.menu-toggle {
+    display: none; 
+}
+
+
+/* --- HERO SECTION (С 3D-эффектом) --- */
+.hero {
+    text-align: center;
+    padding: 150px 0;
+    perspective: 1000px; /* Для 3D эффекта */
+    transition: transform 0.1s ease-out; 
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px var(--color-icy);
+    transform-style: preserve-3d;
+    transform: translateZ(20px); 
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #ffffff; 
+    padding: 15px 50px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 77, 77, 0.4);
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 77, 77, 0.8);
+}
+
+
+/* --- ABOUT SECTION / CARD STYLES --- */
+.about .subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    opacity: 0.8;
+}
+
+.art-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.art-card {
+    flex: 0 0 320px;
+    height: 400px;
+    padding: 30px;
+    border-radius: 20px; 
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.art-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.6),
+        0 0 35px var(--neon-color-shadow);
+    z-index: 10;
+}
+
+.card-title {
+    font-family: var(--font-header);
+    font-size: 1.8rem; 
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.card-description {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Общий эффект для фона карточек: Морозный вихрь */
+.art-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.2;
+    z-index: -2;
+    background: conic-gradient(from 45deg at 50% 50%, var(--neon-color-start) 0deg, transparent 90deg, var(--neon-color-end) 180deg, transparent 270deg, var(--neon-color-start) 360deg);
+    transition: transform 0.8s ease;
+}
+
+.art-card:hover::before { transform: rotate(180deg); opacity: 0.4; }
+
+/* Эффект свечения */
+.art-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(0.1);
+    background: radial-gradient(circle, var(--neon-color-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: -1;
+}
+.art-card:hover::after { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+
+/* Card 1: Icy Blue */
+.art-card-1 {
+    --neon-color-start: var(--color-icy); 
+    --neon-color-end: #008080;   
+    --neon-color-glow: var(--color-icy);
+    --neon-color-shadow: rgba(142, 220, 238, 0.8);
+}
+.art-card-1 .card-title { color: var(--color-icy); text-shadow: 0 0 10px var(--color-icy); }
+
+/* Card 2: Red/Gold */
+.art-card-2 {
+    --neon-color-start: var(--color-accent); 
+    --neon-color-end: var(--color-gold);   
+    --neon-color-glow: var(--color-gold);
+    --neon-color-shadow: rgba(255, 215, 0, 0.8);
+}
+.art-card-2 .card-title { 
+    color: var(--color-gold);
+    text-shadow: 0 0 10px var(--color-gold), 0 0 20px rgba(255, 77, 77, 0.5); 
+}
+/* Эффект искр */
+.art-card-2::before { 
+    background: repeating-linear-gradient(
+        135deg,
+        var(--color-accent) 0px,
+        rgba(255, 215, 0, 0.8) 1px,
+        transparent 2px,
+        transparent 10px
+    );
+    background-size: 15px 15px;
+    opacity: 0.2;
+    animation: sparkle-move 10s linear infinite;
+}
+@keyframes sparkle-move {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+/* Card 3: Silver/White */
+.art-card-3 {
+    --neon-color-start: #E0E0E0; 
+    --neon-color-end: #FFFFFF;   
+    --neon-color-glow: #FFFFFF;
+    --neon-color-shadow: rgba(255, 255, 255, 0.9);
+}
+.art-card-3 .card-title { color: var(--color-light); text-shadow: 0 0 12px #FFFFFF; }
+
+
+/* --- CONTENT BLOCKS --- */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.content-image-box {
+    flex: 1;
+    max-width: 50%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--color-icy); 
+}
+.zoomable-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.content-text {
+    flex: 1;
+    max-width: 50%;
+}
+.content-text h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.alt-layout .content-wrapper {
+    flex-direction: row-reverse;
+}
+.details-list ul, .additional-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+.details-list li, .additional-info li {
+    padding-left: 20px;
+    position: relative;
+}
+.details-list li::before, .additional-info li::before {
+    content: "🌟"; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.8em;
+}
+
+
+/* --- GALLERY FIX: ОДИНАКОВЫЙ РАЗМЕР КАРТИНОК --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item { 
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* ГЛАВНОЕ: Устанавливает квадратные пропорции */
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(142, 220, 238, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-icy);
+}
+
+.gallery-grid .zoomable-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ключевое свойство: заполняет квадрат, обрезая лишнее */
+    display: block;
+}
+
+/* --- REVIEWS SLIDER (SWIPER) --- */
+.reviews-slider {
+    padding: 0 50px;
+}
+.reviews-slider img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+.swiper-button-prev, .swiper-button-next {
+    color: var(--color-icy) !important;
+}
+.swiper-pagination-bullet-active {
+    background: var(--color-icy) !important;
+}
+
+
+/* --- FOOTER / CONTACTS --- */
+/* --- FOOTER / CONTACTS --- */
+.footer-cta {
+    background: linear-gradient(0deg, #0f1724 0%, var(--bg-dark) 100%);
+    padding: 60px 0 80px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.phone-number {
+    /* ИЗМЕНЕНИЕ: Используем шрифт Montserrat для более современного и чистого вида цифр */
+    font-size: 2.5rem;
+    font-family: var(--font-body); /* ИСПОЛЬЗУЕМ BODY FONT: 'Montserrat' */
+    font-weight: 700; /* Делаем жирным */
+    color: var(--color-gold);
+    margin: 20px 0;
+    
+}
+
+/* --- СТИЛЬ КОПИРАЙТА --- */
+.copyright {
+    margin-top: 50px;
+    font-size: 0.85rem;
+    opacity: 0.6; /* Делаем текст менее ярким */
+    color: var(--color-light);
+    font-weight: 400;
+}
+
+/* Адаптация для мобильных, если необходимо */
+@media (max-width: 768px) {
+    .copyright {
+        margin-top: 30px;
+    }
+}
+
+.social-links {
+    /* ... остальной код social-links ... */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.social-button {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white; /* Убедимся, что текст белый */
+}
+
+.whatsapp {
+    background: #25D366;
+}
+
+.telegram {
+    background: #0088CC;
+}
+
+.social-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --- МОДАЛЬНОЕ ОКНО (Увеличение фото) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 200; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-icy);
+}
+
+
+/* --- АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 1000px) {
+    /* Переворот блоков контента в столбец */
+    .content-wrapper, .alt-layout .content-wrapper {
+        flex-direction: column;
+    }
+    .content-image-box, .content-text {
+        max-width: 100%;
+    }
+    .content-text h2 {
+        text-align: center;
+    }
+    .reviews-slider {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; margin-bottom: 30px; }
+    section { padding: 50px 0; }
+
+    /* Мобильное меню */
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100%;
+        background: rgba(13, 22, 40, 0.95);
+        backdrop-filter: blur(15px);
+        transform: translateX(100%);
+        transition: transform 0.4s ease-out;
+        padding-top: 80px;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    }
+    .navigation.active {
+        transform: translateX(0);
+    }
+    .navigation ul {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .navigation li {
+        margin: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .navigation a {
+        display: block;
+        margin-left: 0;
+        padding: 10px 0;
+    }
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--color-light);
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    /* Карточки */
+    .art-card {
+        flex: 0 0 100%; 
+        max-width: 320px;
+    }
+    .art-card-container {
+        justify-content: center;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Уменьшаем размер на мобильных */
+    }
+
+    .phone-number {
+        font-size: 2rem;
+    }
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-button {
+        width: 80%;
+        max-width: 300px;
+    }
+    .modal-content {
+        width: 95%;
+        padding-top: 150px;
+    }
+    .close-btn {
+        top: 20px;
+        right: 20px;
+    }
+}
