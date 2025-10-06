@@ -8,8 +8,8 @@
     --color-accent: #ff5e5e;
 
     /* ИЗМЕНЕНО: Новый градиент фона */
-    --color-bg-start: #a8e0ff; /* Голубой */
-    --color-bg-end: #fef9d7;   /* Желтый */
+    --color-bg-start: #a1caf8; /* Голубой */
+    --color-bg-end: #ffcff3;
 
     --container-width: 1140px;
 }
