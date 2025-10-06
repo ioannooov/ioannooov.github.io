@@ -197,7 +197,7 @@ body::after {
 .cta-button {
     display: inline-block;
     background: var(--color-accent);
-    color: white; 
+    color: #ffffff; 
     padding: 15px 50px;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -698,4 +698,5 @@ body::after {
     }
 
 }
+
 
