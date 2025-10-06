@@ -3,144 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Живые Сказки | Ярославль Ростовые куклы, Дед Мороз, Снегурочка</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Живые Сказки Ярославль | Дед Мороз и Снегурочка, Ростовые куклы</title>
+    <meta name="description" content="Заказ ростовых кукол и аниматоров в Ярославле. Устроим незабываемый праздник с Дедом Морозом, Снегурочкой и сказочными героями. Экспресс-поздравления!">
+    <meta name="keywords" content="ярославль, аниматоры, ростовые куклы, экспресс поздравление, детский праздник, дед мороз, снегурочка, снегурка, новый год, санта-клаус, зайка, сказка, живые сказки">
+    <meta name="author" content="Живые Сказки">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Живые Сказки | Аниматоры и ростовые куклы в Ярославле">
+    <meta property="og:description" content="Незабываемые экспресс-поздравления от Деда Мороза, Снегурочки и любимых сказочных героев для детей и взрослых.">
+    <meta property="og:image" content="http://icyou/img/logo1.png">
+    <meta property="og:url" content="icyou.ru">
+    <meta property="og:site_name" content="Живые Сказки">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="img/logo1.png">
-
 </head>
 <body>
 
-    <canvas id="snow"></canvas>
+    <div id="snow-container"></div>
 
-    <header>
-        <nav>
-            <img src="img/logo1.png" alt="Логотип" class="logo1">
-            <div class="logo">Живые Сказки</div>
-            <ul>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#puppets">Ростовые куклы</a></li>
-                <li><a href="#ded-moroz">Снегурочка</a></li>
-                <li><a href="#examples">Примеры</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="img/logo1.png" alt="Логотип Живые Сказки">
+                    <span>Живые Сказки</span>
+                </a>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#gallery">Галерея</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#contact">Заказать</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-content">
+            <div class="container">
                 <h1>Незабываемые эмоции для детей и взрослых</h1>
-                <p>Экспресс-поздравления в Ярославле и области</p>
                 <a href="#contact" class="cta-button">Заказать праздник</a>
             </div>
-            <img src="img/snegurochka.png" alt="Снегурочка" class="snegurochka-animated">
         </section>
 
-        <section id="about" class="content-section">
-            <h2>О компании "Живые Сказки"</h2>
-            <p class="subtitle">Мы устраиваем экспресс поздравления до 30 минут.</p>
-            <div class="features">
-                <div class="feature-item">
-                    <h3>Интересная программа</h3>
-                    <p>Яркие и веселые сценарии для любого возраста.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Индивидуальный подход</h3>
-                    <p>Учтем все ваши пожелания, чтобы сделать праздник особенным.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Качественные костюмы</h3>
-                    <p>Наши персонажи выглядят как настоящие сказочные герои.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="puppets" class="content-section gray-bg">
-            <h2>Ростовые куклы в сказочном мире</h2>
-            <div class="service-card">
-                <img src="img/mishka.jpg" alt="Ростовая кукла Мишка">
-                <div class="service-description">
-                    <h2>Наши плюшевые мишка и зайка подарят вам незабываемые эмоции!</h2>
-                    <p>Поздравление длится 15-20 минут и идеально подходит для:</p>
-                    <ul>
-                        <li>Поздравления с любым праздником</li>
-                        <li>Предложения руки и сердца</li>
-                        <li>Выписки из роддома</li>
-                        <li>Гендер пати</li>
-                        <li>Вручения подарков и цветов</li>
-                        <li>Встречи гостей (велком зона)</li>
-                        <li>Рекламных акций и корпоративов</li>
-                    </ul>
+        <section id="about" class="about">
+            <div class="container">
+                <h2>О компании "Живые Сказки"</h2>
+                <p class="subtitle">Мы устраиваем экспресс поздравления до 30 минут.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <h3>Интересная программа</h3>
+                        <p>Наши аниматоры приезжают с уникальной программой, музыкой и реквизитом, чтобы веселье не прекращалось.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Индивидуальный подход</h3>
+                        <p>Учитываем возраст, интересы и характер ребенка, чтобы поздравление стало по-настоящему личным и волшебным.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Качественные костюмы</h3>
+                        <p>Все наши костюмы выглядят реалистично и опрятно, создавая полную иллюзию присутствия сказочного героя.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="ded-moroz" class="content-section">
-            <h2>Дед Мороз и Снегурка, которые верят в чудеса так же, как ваш ребёнок</h2>
-            <div class="service-card reverse">
-                 <div class="service-description">
-                    <h2>Поздравим вас и ваших детей с Новым Годом!</h2>
-                    <p>Подарите сказку своим близким с нашими главными зимними волшебниками.</p>
-                    <ul>
-                        <li>Сюжетные программы на дому (25 минут)</li>
-                        <li>Выступление Деда Мороза и Снегурочки на корпоративах</li>
-                    </ul>
+        <section class="content-block">
+            <div class="container content-wrapper">
+                <div class="content-image">
+                    <img src="img/mishka.jpg" alt="Ростовая кукла" class="popup-image">
                 </div>
-                <img src="img/snegurka.jpg" alt="Дед Мороз и Снегурочка">
-            </div>
-        </section>
-
-        <section id="examples" class="content-section gray-bg">
-            <h2>Примеры наших работ</h2>
-            <div class="gallery">
-                <div class="gallery-item"><img src="img/ex1.jpg" alt="Пример работы 1"></div>
-                <div class="gallery-item"><img src="img/ex2.jpg" alt="Пример работы 2"></div>
-                <div class="gallery-item"><img src="img/ex3.jpg" alt="Пример работы 3"></div>
-            </div>
-        </section>
-
-        <section id="reviews" class="content-section">
-            <h2>Отзывы наших клиентов</h2>
-            <div class="carousel-container">
-                <button class="carousel-button prev-button">&lt;</button>
-                <div class="carousel-track-container">
-                    <ul class="carousel-track">
-                        <li class="carousel-slide"><img src="img/otz1.jpg" alt="Отзыв 1"></li>
-                        <li class="carousel-slide"><img src="img/otz2.jpg" alt="Отзыв 2"></li>
-                        <li class="carousel-slide"><img src="img/otz3.jpg" alt="Отзыв 3"></li>
-                        <li class="carousel-slide"><img src="img/otz4.jpg" alt="Отзыв 4"></li>
-                        <li class="carousel-slide"><img src="img/otz5.jpg" alt="Отзыв 5"></li>
-                        <li class="carousel-slide"><img src="img/otz6.jpg" alt="Отзыв 6"></li>
-                        <li class="carousel-slide"><img src="img/otz7.jpg" alt="Отзыв 7"></li>
-                    </ul>
+                <div class="content-text">
+                    <h2>Ростовые куклы в сказочном мире</h2>
+                    <p>Наши ростовые куклы — это не просто костюмы. Это ожившие персонажи, которые приносят радость и удивление. Представьте восторг вашего ребенка, когда его придет поздравить огромный, добрый и пушистый герой из любимого мультфильма!</p>
                 </div>
-                <button class="carousel-button next-button">&gt;</button>
             </div>
-            <p class="subtitle">Смотрите, что говорят о нас!</p>
         </section>
 
-        <section id="contact" class="contact-section">
-            <h2>Как заказать праздник?</h2>
-            <p>Просто напишите нам в любой удобный мессенджер, и мы обо всем договоримся!</p>
-            <a href="https://wa.me/79807465478" class="contact-button">+7 (980) 746-54-78</a>
-            <p class="social-text">Написать в WhatsApp / Telegram</p>
+        <section class="content-block alt-layout">
+            <div class="container content-wrapper">
+                <div class="content-text">
+                    <h2>Дед Мороз и Снегурочка, которые верят в чудеса</h2>
+                    <p>Наши Дед Мороз и Снегурочка — настоящие профессионалы, которые искренне любят свою работу. Они найдут подход к любому ребенку, поиграют, послушают стихи и, конечно же, подарят долгожданный подарок, оставив веру в чудо на весь год.</p>
+                </div>
+                <div class="content-image">
+                    <img src="img/snegurka.jpg" alt="Дед Мороз и Снегурочка" class="popup-image">
+                </div>
+            </div>
         </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2>Примеры наших работ</h2>
+                <div class="gallery-grid">
+                    <img src="img/ex1.jpg" alt="Пример работы 1" class="popup-image">
+                    <img src="img/ex2.jpg" alt="Пример работы 2" class="popup-image">
+                    <img src="img/ex3.jpg" alt="Пример работы 3" class="popup-image">
+                    <img src="img/deti1.jpg" alt="Пример работы 4" class="popup-image">
+                    <img src="img/deti2.jpg" alt="Пример работы 5" class="popup-image">
+                    <img src="img/kukla1.jpg" alt="Пример работы 6" class="popup-image">
+                  
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="swiper reviews-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/otz1.jpg" alt="Отзыв 1"></div>
+                        <div class="swiper-slide"><img src="img/otz2.jpg" alt="Отзыв 2"></div>
+                        <div class="swiper-slide"><img src="img/otz3.jpg" alt="Отзыв 3"></div>
+                        <div class="swiper-slide"><img src="img/otz4.jpg" alt="Отзыв 4"></div>
+                        <div class="swiper-slide"><img src="img/otz5.jpg" alt="Отзыв 5"></div>
+                        <div class="swiper-slide"><img src="img/otz6.jpg" alt="Отзыв 6"></div>
+                        <div class="swiper-slide"><img src="img/otz7.jpg" alt="Отзыв 7"></div>
+                        </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
-    <footer>
-        <p>&copy;<span id="year"></span> Живые Сказки, г. Ярославль. Все права защищены.</p>
+    <footer id="contact" class="footer-cta">
+        <div class="container">
+            <h2>Как заказать праздник?</h2>
+            <p>Просто напишите нам в любой удобный мессенджер, и мы обо всем договоримся!</p>
+            <div class="phone-number">+7 (980) 746-54-78</div>
+            <div class="social-links">
+                <a href="https://wa.me/79807465478" target="_blank" class="social-button whatsapp">Написать в WhatsApp</a>
+                <a href="https://t.me/+79807465478" target="_blank" class="social-button telegram">Написать в Telegram</a>
+            </div>
+            <div class="copyright">
+                © 2025 Живые Сказки. Все права защищены.
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
 </html>
+
+
+
 
