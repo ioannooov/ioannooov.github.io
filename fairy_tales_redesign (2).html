@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Живые Сказки | Премиум Аниматоры Ярославль</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0E1A;
+            --bg-secondary: #111827;
+            --bg-card: #1A1F2E;
+            --accent-primary: #FF3B5C;
+            --accent-secondary: #00D9FF;
+            --accent-gold: #FFB800;
+            --accent-purple: #A855F7;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 59, 92, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            transition: padding 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 12px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 59, 92, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 59, 92, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .hero-image-card {
+            position: absolute;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .hero-image-card:nth-child(1) {
+            width: 60%;
+            height: 70%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .hero-image-card:nth-child(2) {
+            width: 55%;
+            height: 60%;
+            bottom: 0;
+            right: 0;
+            z-index: 3;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* FEATURES SECTION - УЛУЧШЕННЫЕ КАРТОЧКИ */
+        .features {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 59, 92, 0.1);
+            border: 1px solid rgba(255, 59, 92, 0.2);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 48px 36px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Анимированная граница */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2), var(--card-color-1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Светящийся эффект */
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--card-color-1) 0%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.6s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.15;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--card-color-1);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 80px var(--card-shadow);
+        }
+
+        /* Декоративные линии */
+        .feature-decoration {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .decoration-line-1 {
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-top: 2px solid var(--card-color-1);
+            border-right: 2px solid var(--card-color-1);
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+
+        .decoration-line-2 {
+            bottom: 20px;
+            left: 20px;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--card-color-1), transparent);
+            opacity: 0.4;
+            transition: all 0.5s ease;
+        }
+
+        .feature-card:hover .decoration-line-1 {
+            width: 80px;
+            height: 80px;
+            opacity: 0.8;
+        }
+
+        .feature-card:hover .decoration-line-2 {
+            width: 120px;
+            opacity: 0.8;
+        }
+
+        /* Цветовые схемы карточек */
+        .feature-card-1 {
+            --card-color-1: #00D9FF;
+            --card-color-2: #667EEA;
+            --card-shadow: rgba(0, 217, 255, 0.3);
+        }
+
+        .feature-card-2 {
+            --card-color-1: #FF3B5C;
+            --card-color-2: #FFB800;
+            --card-shadow: rgba(255, 59, 92, 0.3);
+        }
+
+        .feature-card-3 {
+            --card-color-1: #A855F7;
+            --card-color-2: #EC4899;
+            --card-shadow: rgba(168, 85, 247, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: 0 15px 40px var(--card-shadow);
+        }
+
+        /* Орбиты вокруг иконки */
+        .icon-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            border: 1px dashed var(--card-color-1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .feature-card:hover .icon-orbit {
+            opacity: 0.3;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .feature-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-size: 15px;
+        }
+
+        /* Частицы */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--card-color-1);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .feature-card:hover .particle {
+            animation: particleFloat 2s ease-out forwards;
+        }
+
+        .particle:nth-child(1) { top: 30%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.2s; }
+        .particle:nth-child(3) { top: 80%; left: 40%; animation-delay: 0.4s; }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .content-grid.reverse {
+            direction: rtl;
+        }
+
+        .content-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .content-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .content-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .content-image-wrapper::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-image-wrapper:hover::after {
+            opacity: 1;
+        }
+
+        .content-image-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .content-image-wrapper img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .content-text p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            padding: 16px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 16px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .content-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        /* GALLERY */
+        .gallery {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* REVIEWS */
+        .reviews {
+            padding: 120px 0;
+        }
+
+        .reviews-slider {
+            padding: 40px 0;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 8px;
+            height: auto;
+        }
+
+        .review-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--accent-primary) !important;
+            background: var(--bg-card);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 20px !important;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--text-secondary) !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--accent-primary) !important;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .phone-display {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 32px 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .telegram {
+            background: #0088CC;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-primary);
+        }
+
+        /* SNOW ANIMATION */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0.2;
+            }
+        }
+
+        /* ========== АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ ========== */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 56px;
+            }
+
+            .section-title {
+                font-size: 44px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .feature-card {
+                padding: 36px 28px;
+            }
+
+            .content-grid {
+                gap: 60px;
+            }
+
+            .content-text h2 {
+                font-size: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========== АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            /* Header Mobile */
+            .header {
+                padding: 16px 0;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(17, 24, 39, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 30px 40px;
+                transition: right 0.4s ease;
+                gap: 0;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 0;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-menu a {
+                display: block;
+                font-size: 18px;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            /* Hero Mobile */
+            .hero {
+                min-height: auto;
+                padding: 100px 0 60px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-images {
+                height: 400px;
+                margin: 0 -16px;
+            }
+
+            .hero-image-card:nth-child(1) {
+                width: 70%;
+                height: 60%;
+            }
+
+            .hero-image-card:nth-child(2) {
+                width: 65%;
+                height: 55%;
+            }
+
+            /* Features Mobile */
+            .features {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
+            }
+
+            .section-label {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 32px 24px;
+            }
+
+            .feature-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .feature-card h3 {
+                font-size: 22px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+            .decoration-line-1 {
+                width: 40px;
+                height: 40px;
+            }
+
+            .decoration-line-2 {
+                width: 60px;
+            }
+
+            /* Content Mobile */
+            .content-section {
+                padding: 60px 0;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .content-grid.reverse {
+                direction: ltr;
+            }
+
+            .content-images {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .content-image-wrapper img {
+                height: 200px;
+            }
+
+            .content-text h2 {
+                font-size: 28px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .content-text p {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .content-list li {
+                padding: 12px 0 12px 32px;
+                font-size: 14px;
+            }
+
+            .content-list li::before {
+                font-size: 16px;
+            }
+
+            /* Gallery Mobile */
+            .gallery {
+                padding: 80px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            /* Reviews Mobile */
+            .reviews {
+                padding: 80px 0;
+            }
+
+            .reviews-slider {
+                padding: 20px 0;
+            }
+
+            .review-card img {
+                height: 400px;
+            }
+
+            .swiper-button-next, .swiper-button-prev {
+                width: 40px;
+                height: 40px;
+            }
+
+            .swiper-button-next::after, .swiper-button-prev::after {
+                font-size: 16px !important;
+            }
+
+            /* CTA Mobile */
+            .cta-section {
+                padding: 80px 0;
+            }
+
+            .phone-display {
+                font-size: 32px;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 24px;
+            }
+
+            /* Modal Mobile */
+            .modal-content {
+                max-width: 95%;
+                margin: 10% auto;
+            }
+
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                font-size: 32px;
+            }
+        }
+
+        /* ========== АДАПТАЦИЯ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ ========== */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .content-text h2 {
+                font-size: 24px;
+            }
+
+            .phone-display {
+                font-size: 24px;
+            }
+
+            .feature-card {
+                padding: 24px 20px;
+            }
+
+            .content-images {
+                grid-template-columns: 1fr;
+            }
+
+            .content-image-wrapper img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="snow-container"></div>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">Живые Сказки</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#features">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Магия праздника в каждом моменте</h1>
+                    <p>Профессиональные аниматоры и премиум ростовые куклы для незабываемых детских праздников в Ярославле</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Заказать праздник</a>
+                        <a href="#gallery" class="btn-secondary">Посмотреть работы</a>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="hero-image-card">
+                        <img src="img/snegurka.jpg" alt="Снегурочка">
+                    </div>
+                    <div class="hero-image-card">
+                        <img src="img/mishka.jpg" alt="Ростовая кукла">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Наши услуги</span>
+                <h2 class="section-title">Что мы предлагаем</h2>
+                <p class="section-subtitle">Экспресс-поздравления и полноценные программы для любого повода</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-card-1">
+                    <div class="feature-decoration decoration-line-1"></div>
+                    <div class="feature-decoration decoration-line-2"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="feature-icon">
+                        <div class="icon-orbit"></div>
+                        ⏱️
+                    </div>
+                    <h3>30 минут чуда</h3>
+                    <p>Экспресс-поздравление с играми, стихами и волшебством. Идеально для тех, у кого мало времени, но много ожидания!</p>
+                </div>
+                <div class="feature-card feature-card-2">
+                    <div class="feature-decoration decoration-line-1"></div>
+                    <div class="feature-decoration decoration-line-2"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="feature-icon">
+                        <div class="icon-orbit"></div>
+                        ✨
+                    </div>
+                    <h3>Эффект WOW!</h3>
+                    <p>Вручение подарка, зажигательная песня и фото на память. Создаем взрыв чистой радости и смеха!</p>
+                </div>
+                <div class="feature-card feature-card-3">
+                    <div class="feature-decoration decoration-line-1"></div>
+                    <div class="feature-decoration decoration-line-2"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="feature-icon">
+                        <div class="icon-orbit"></div>
+                        ❄️
+                    </div>
+                    <h3>Премиум костюмы</h3>
+                    <p>Безупречные образы: богатая отделка, блеск и внимание к каждой детали. Настоящая сказка!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-images">
+                    <div class="content-image-wrapper">
+                        <img src="img/ex2.jpg" alt="Ростовая кукла" class="zoomable">
+                    </div>
+                    <div class="content-image-wrapper">
+                        <img src="img/mishka.jpg" alt="Мишка" class="zoomable">
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h2>Ростовые куклы оживают</h2>
+                    <p>Представьте восторг вашего ребенка, когда его придет поздравить огромный, добрый и пушистый герой из любимого мультфильма!</p>
+                    <ul class="content-list">
+                        <li>Поздравления с любым праздником</li>
+                        <li>Выписки из роддома</li>
+                        <li>Вручение подарков и цветов</li>
+                        <li>Встреча гостей (велком зона)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid reverse">
+                <div class="content-text">
+                    <h2>Дед Мороз и Снегурочка с душой</h2>
+                    <p>Наши актеры — настоящие профессионалы. Они найдут подход к любому ребенку, поиграют, послушают стихи и подарят веру в чудо!</p>
+                    <ul class="content-list">
+                        <li>Сюжетные программы на дому (от 25 минут)</li>
+                        <li>Выступления на корпоративах</li>
+                        <li>Утренники в детских садах</li>
+                        <li>Индивидуальный сценарий для каждого ребенка</li>
+                    </ul>
+                </div>
+                <div class="content-images">
+                    <div class="content-image-wrapper">
+                        <img src="img/snegurka.jpg" alt="Снегурочка" class="zoomable">
+                    </div>
+                    <div class="content-image-wrapper">
+                        <img src="img/ex1.jpg" alt="Праздник" class="zoomable">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Портфолио</span>
+                <h2 class="section-title">Наши работы</h2>
+                <p class="section-subtitle">Моменты радости, запечатленные навсегда</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/deti1.jpg" alt="Работа 1" class="zoomable">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/deti2.jpg" alt="Работа 2" class="zoomable">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/kukla1.jpg" alt="Работа 3" class="zoomable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Отзывы</span>
+                <h2 class="section-title">Что говорят клиенты</h2>
+                <p class="section-subtitle">Более 1000 счастливых семей доверили нам свои праздники</p>
+            </div>
+            <div class="swiper reviews-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz1.jpg" alt="Отзыв 1">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz2.jpg" alt="Отзыв 2">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz3.jpg" alt="Отзыв 3">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz4.jpg" alt="Отзыв 4">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz5.jpg" alt="Отзыв 5">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz6.jpg" alt="Отзыв 6">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <img src="img/otz7.jpg" alt="Отзыв 7">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <span class="section-label">Контакты</span>
+                <h2 class="section-title">Готовы создать праздник?</h2>
+                <p class="section-subtitle">Напишите нам в любой удобный мессенджер — мы ответим в течение 5 минут!</p>
+                <div class="phone-display">+7 (980) 746-54-78</div>
+                <div class="social-buttons">
+                    <a href="https://wa.me/79807465478" target="_blank" class="social-btn whatsapp">
+                        <span>📱</span> WhatsApp
+                    </a>
+                    <a href="https://t.me/+79807465478" target="_blank" class="social-btn telegram">
+                        <span>✈️</span> Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Живые Сказки. Все права защищены. Ярославль</p>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Snow animation
+        const snowContainer = document.getElementById('snow-container');
+        const snowCount = 50;
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            
+            const size = Math.random() * 3 + 1;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            
+            const duration = Math.random() * 15 + 10;
+            const delay = Math.random() * -15;
+            
+            snowflake.style.animationDuration = `${duration}s`;
+            snowflake.style.animationDelay = `${delay}s`;
+            
+            snowContainer.appendChild(snowflake);
+
+            snowflake.addEventListener('animationiteration', () => {
+                snowflake.style.left = `${Math.random() * 100}vw`;
+            });
+        }
+
+        for (let i = 0; i < snowCount; i++) {
+            createSnowflake();
+        }
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        // Close mobile menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Image modal
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeModal = document.querySelector('.close-modal');
+        const zoomableImages = document.querySelectorAll('.zoomable');
+
+        zoomableImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Swiper initialization
+        const swiper = new Swiper('.reviews-slider', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
