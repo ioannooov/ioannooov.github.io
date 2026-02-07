@@ -1,1144 +1,912 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MailFlow - Modern Email Marketing</title>
+    <title>Эвакуация Автомобилей | Профессиональная служба 24/7</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Outfit:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray-dark: #1a1a1a;
+            --gray-medium: #333333;
+            --gray-light: #cccccc;
+            --accent: #ffffff;
+            --bg-main: #121212;
+        }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #0d0d0d;
-            --accent-lime: #c4ff00;
-            --accent-purple: #6366f1;
-            --accent-pink: #ec4899;
-            --accent-violet: #8b5cf6;
-            --text-primary: #ffffff;
-            --text-secondary: #6b7280;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-        }
-
+        
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-main);
+            color: var(--white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
-
-        .heading-font {
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Noise Overlay */
-        .noise-overlay {
+        
+        /* Grid Background */
+        .grid-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 0;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            z-index: 9999;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
         }
-
-        /* Glass Card Effect */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
         }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-        }
-
-        /* Gradient Meshes */
-        .gradient-mesh {
-            position: absolute;
-            width: 600px;
+        
+        /* Tow Truck Background */
+        .truck-background {
+            position: fixed;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            width: 800px;
             height: 600px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.12;
+            z-index: 1;
+            opacity: 0.08;
             pointer-events: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect x="100" y="300" width="400" height="150" fill="white"/><rect x="450" y="250" width="200" height="200" fill="white"/><circle cx="200" cy="470" r="40" fill="white"/><circle cx="550" cy="470" r="40" fill="white"/><rect x="520" y="200" width="100" height="60" fill="white"/><polygon points="500,350 650,200 650,350" fill="white" opacity="0.7"/><rect x="80" y="320" width="30" height="30" fill="white"/></svg>');
+            background-repeat: no-repeat;
+            background-size: contain;
+            animation: truckFloat 15s ease-in-out infinite;
         }
-
+        
+        @keyframes truckFloat {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-30px); }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            width: calc(100% - 2rem);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            z-index: 1000;
+            padding: 0.8rem 1.5rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
         /* Hero Section */
-        .hero-section {
+        .hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5rem 0;
+            padding: 2rem;
+            z-index: 2;
             overflow: hidden;
         }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .glow-text {
-            color: var(--accent-lime);
-            text-shadow: 0 0 40px rgba(196, 255, 0, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.125rem, 3vw, 1.5rem);
-            color: var(--text-secondary);
-            max-width: 42rem;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: var(--accent-lime);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(196, 255, 0, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 48rem;
-            margin: 4rem auto 0;
-        }
-
-        .stat-item {
+        
+        .hero-content {
             text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
         }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        /* Bento Grid */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-
-        .newsletter-card {
-            position: relative;
-            height: 16rem;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 6rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 5px;
+            font-weight: 800;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
-
-        .newsletter-card::before {
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--gray-light);
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--white);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .cta-button::before {
             content: '';
             position: absolute;
-            inset: 0;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--accent-lime), var(--accent-purple), var(--accent-lime));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--black);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+            z-index: -1;
         }
-
-        .card-glow {
+        
+        .cta-button:hover {
+            color: var(--white);
+        }
+        
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        
+        /* Section Styles */
+        section {
+            position: relative;
+            padding: 8rem 2rem;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--white);
+        }
+        
+        /* Services Grid - Fixed Columns */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Ровно 3 колонки */
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 8rem;
-            height: 8rem;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.2;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
         }
-
-        .card-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 10;
+        
+        .service-card:hover::before {
+            left: 100%;
         }
-
-        .card-title {
-            font-size: 1.5rem;
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .service-icon {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 10;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .card-desc {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .card-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 10;
-        }
-
-        .newsletter-card:hover .card-link {
-            transform: translateX(0.5rem);
-        }
-
-        /* Feature Cards */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            padding: 1.5rem;
-            border-radius: 1rem;
-        }
-
-        .feature-icon {
-            width: 2rem;
-            height: 2rem;
+        
+        .service-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        
+        .service-card p {
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--gray-light);
         }
-
-        .feature-desc {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Pricing */
-        .pricing-grid {
+        
+        /* Contact Grid */
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-
-        .pricing-card {
-            position: relative;
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
-            border-radius: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 3px solid var(--white);
+            transition: all 0.3s ease;
         }
-
-        .pricing-card:hover {
-            transform: scale(1.02) translateY(-8px);
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
         }
-
-        .popular-badge {
-            position: absolute;
-            top: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: var(--accent-purple);
-        }
-
-        .pricing-name {
+        
+        .contact-item h3 {
             font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-desc {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-btn {
-            width: 100%;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features {
-            list-style: none;
-        }
-
-        .pricing-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
             margin-bottom: 1rem;
-            font-size: 0.875rem;
-            color: #d1d5db;
-        }
-
-        .check-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            flex-shrink: 0;
-            margin-top: 0.125rem;
-        }
-
-        /* Client Logos */
-        .clients-section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .clients-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
-        }
-
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            opacity: 0.5;
-        }
-
-        .client-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-
-        .client-logo:hover {
-            opacity: 1;
-        }
-
-        /* FAQ */
-        .faq-section {
-            padding: 6rem 0;
-        }
-
-        .faq-container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-radius: 1rem;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            text-align: left;
-            cursor: pointer;
-            font-size: 1.125rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            transition: background 0.3s ease;
         }
-
-        .faq-question:hover {
+        
+        .contact-item p {
+            font-weight: 300;
+            color: var(--gray-light);
+        }
+        
+        /* Pricing Table */
+        .pricing-table {
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-row:hover {
             background: rgba(255, 255, 255, 0.05);
         }
-
-        .faq-icon {
-            width: 1.25rem;
-            height: 1.25rem;
+        
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-row div {
+            padding: 1.5rem 2rem;
+        }
+        
+        .pricing-row div:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 400;
+        }
+        
+        .pricing-row div:last-child {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-align: right;
+        }
+        
+        /* Tips List */
+        .tips-list {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-left: 4px solid var(--white);
+            position: relative;
+            padding-left: 4rem;
+        }
+        
+        .tip-number {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.3;
+        }
+        
+        .tip-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .tip-item p {
+            font-weight: 300;
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+        
+        /* FAQ */
+        .faq-list {
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
             transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 1rem;
         }
-
-        .faq-icon.active {
-            transform: rotate(180deg);
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
         }
-
+        
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(255, 255, 255, 0.01);
+            padding: 0 2rem;
         }
-
-        .faq-answer.active {
+        
+        .faq-item.active .faq-answer {
             max-height: 500px;
+            padding: 1.5rem 2rem;
         }
-
-        .faq-answer-content {
-            padding: 0 2rem 1.5rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
+        
+        .faq-answer p {
+            font-weight: 300;
+            color: var(--gray-light);
+            line-height: 1.8;
         }
-
+        
         /* Footer */
         footer {
-            padding: 4rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .footer-desc {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .footer-title {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .footer-social a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-
-        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
-        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
-        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
-        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
-        .stagger-5 { animation-delay: 0.5s; opacity: 0; }
-
-        /* Section Titles */
-        .section-title {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
             text-align: center;
-            margin-bottom: 4rem;
+        }
+        
+        footer p {
+            font-weight: 300;
+            color: var(--gray-light);
+            letter-spacing: 1px;
+        }
+        
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--white);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+        
+        /* Responsive Settings */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+            }
+            .hero h1 {
+                font-size: 4.5rem;
+            }
         }
 
-        .section-title h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
+        @media (max-width: 768px) {
+            header {
+                top: 0.5rem;
+                left: 0.5rem;
+                right: 0.5rem;
+                width: calc(100% - 1rem);
+                padding: 0.6rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 3rem;
+                transition: right 0.3s ease;
+                border-radius: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .pricing-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-row div:first-child {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .pricing-row div:last-child {
+                text-align: left;
+            }
 
-        .section-title p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 0;
+            .services-grid {
+                grid-template-columns: 1fr; /* 1 колонка на мобильных */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Noise Overlay -->
-    <div class="noise-overlay"></div>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <!-- Gradient Meshes -->
-        <div class="gradient-mesh" style="background: var(--accent-lime); top: -200px; left: -200px;"></div>
-        <div class="gradient-mesh" style="background: var(--accent-purple); bottom: -200px; right: -200px;"></div>
-        
-        <div class="container">
-            <div style="text-align: center;">
-                <div class="fade-in stagger-1">
-                    <div class="glass-card hero-badge">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-lime);">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                        </svg>
-                        <span>Trusted by 50,000+ creators</span>
-                    </div>
+    <div class="scroll-progress"></div>
+    
+    <div class="grid-background"></div>
+    <div class="truck-background"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">EVAC24</div>
+            <ul class="nav-links">
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#tips">Советы</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ЭВАКУАЦИЯ<br>АВТОМОБИЛЕЙ</h1>
+            <p class="hero-subtitle">Профессиональная служба эвакуации 24/7<br>Быстро. Надёжно. Круглосуточно.</p>
+            <a href="tel:+74951234567" class="cta-button">Вызвать эвакуатор</a>
+        </div>
+    </section>
+    
+    <section id="services">
+        <h2 class="section-title">Наши Услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">ДТП</div>
+                <h3>Эвакуация после ДТП</h3>
+                <p>Быстрая и безопасная эвакуация транспортных средств с места дорожно-транспортного происшествия. Работаем со страховыми компаниями.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">Ремонт</div>
+                <h3>Техническая неисправность</h3>
+                <p>Эвакуация автомобилей при поломке двигателя, коробки передач или других критических систем. Доставка до сервисного центра.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">Парковка</div>
+                <h3>Нарушение парковки</h3>
+                <p>Перемещение автомобилей, припаркованных с нарушением правил. Работаем по договорам с управляющими компаниями.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">Rescue</div>
+                <h3>Эвакуация из труднодоступных мест</h3>
+                <p>Извлечение автомобилей из кюветов, водоёмов, заснеженных участков. Используем специализированное оборудование.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">Транспорт</div>
+                <h3>Перевозка спецтехники</h3>
+                <p>Транспортировка мототехники, квадроциклов, легковых и грузовых автомобилей. Индивидуальный подход к каждому заказу.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">Маршрут</div>
+                <h3>Междугородняя эвакуация</h3>
+                <p>Перевозка автомобилей между городами на любые расстояния. Гарантируем сохранность вашего транспорта.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacts">
+        <h2 class="section-title">Контакты Компаний</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>EvacExpress</h3>
+                <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+                <p><strong>Email:</strong> info@evacexpress.ru</p>
+                <p><strong>Режим:</strong> Круглосуточно</p>
+            </div>
+            <div class="contact-item">
+                <h3>СпасАвто24</h3>
+                <p><strong>Телефон:</strong> +7 (495) 234-56-78</p>
+                <p><strong>Email:</strong> help@spasavto24.ru</p>
+                <p><strong>Режим:</strong> 24/7</p>
+            </div>
+            <div class="contact-item">
+                <h3>ПрофЭвакуация</h3>
+                <p><strong>Телефон:</strong> +7 (495) 345-67-89</p>
+                <p><strong>Email:</strong> order@profevac.ru</p>
+                <p><strong>Режим:</strong> Круглосуточно</p>
+            </div>
+            <div class="contact-item">
+                <h3>АвтоПомощь Плюс</h3>
+                <p><strong>Телефон:</strong> +7 (495) 456-78-90</p>
+                <p><strong>Email:</strong> support@autohelp.ru</p>
+                <p><strong>Режим:</strong> 24/7</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing">
+        <h2 class="section-title">Цены и Условия</h2>
+        <div class="pricing-table">
+            <div class="pricing-row">
+                <div>Эвакуация легкового автомобиля (в пределах города)</div>
+                <div>от 2 500 ₽</div>
+            </div>
+            <div class="pricing-row">
+                <div>Эвакуация внедорожника / минивэна</div>
+                <div>от 3 500 ₽</div>
+            </div>
+            <div class="pricing-row">
+                <div>Эвакуация после ДТП (с оформлением документов)</div>
+                <div>от 3 000 ₽</div>
+            </div>
+            <div class="pricing-row">
+                <div>Извлечение из кювета / сугроба</div>
+                <div>от 4 000 ₽</div>
+            </div>
+            <div class="pricing-row">
+                <div>Междугородняя эвакуация (за км)</div>
+                <div>от 35 ₽/км</div>
+            </div>
+            <div class="pricing-row">
+                <div>Ночной тариф (с 22:00 до 06:00)</div>
+                <div>+30%</div>
+            </div>
+            <div class="pricing-row">
+                <div>Подача эвакуатора (в течение 30 минут)</div>
+                <div>Бесплатно</div>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; color: var(--gray-light); font-weight: 300; font-style: italic;">
+            * Точная стоимость рассчитывается индивидуально в зависимости от расстояния, времени суток и сложности работ. Оплата производится после оказания услуги.
+        </p>
+    </section>
+    
+    <section id="tips">
+        <h2 class="section-title">Советы Водителям</h2>
+        <div class="tips-list">
+            <div class="tip-item">
+                <div class="tip-number">01</div>
+                <h3>Регулярное техническое обслуживание</h3>
+                <p>Проходите плановое ТО согласно регламенту производителя. Своевременная замена расходных материалов, проверка тормозной системы и подвески помогут избежать поломок в пути.</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-number">02</div>
+                <h3>Всегда имейте при себе контакты</h3>
+                <p>Сохраните номера служб эвакуации в телефоне. В экстренной ситуации это сэкономит драгоценное время. Также держите под рукой полис страхования.</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-number">03</div>
+                <h3>Действия при ДТП</h3>
+                <p>Включите аварийную сигнализацию, выставьте знак аварийной остановки на расстоянии 15 метров (в городе) или 30 метров (на трассе). Вызовите ГИБДД и при необходимости эвакуатор.</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-number">04</div>
+                <h3>Подготовка к зиме</h3>
+                <p>Замените летнюю резину на зимнюю, проверьте заряд аккумулятора, залейте незамерзающую жидкость. Держите в багажнике трос, лопату и провода для прикуривания.</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-number">05</div>
+                <h3>Правильная парковка</h3>
+                <p>Паркуйтесь только в разрешённых местах. Неправильная парковка может привести к эвакуации на штрафстоянку и дополнительным расходам на возврат автомобиля.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq">
+        <h2 class="section-title">Часто Задаваемые Вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Как быстро приедет эвакуатор?</span>
+                    <span class="faq-toggle">+</span>
                 </div>
-                
-                <h1 class="heading-font hero-title fade-in stagger-2">
-                    Email marketing<br>
-                    <span class="glow-text">that converts</span>
-                </h1>
-                
-                <p class="hero-subtitle fade-in stagger-3">
-                    Build, grow, and engage your audience with AI-powered campaigns that feel personal at scale
-                </p>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;" class="fade-in stagger-4">
-                    <button class="btn btn-primary">
-                        Start free trial
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </button>
-                    <button class="btn btn-secondary glass-card">
-                        Watch demo
-                    </button>
+                <div class="faq-answer">
+                    <p>В среднем эвакуатор прибывает на место в течение 30-40 минут после принятия заказа. Время может варьироваться в зависимости от загруженности дорог и удалённости вашего местоположения.</p>
                 </div>
-
-                <!-- Stats -->
-                <div class="stats-grid fade-in stagger-5">
-                    <div class="stat-item">
-                        <div class="heading-font stat-number" style="color: var(--accent-lime);">99.9%</div>
-                        <div class="stat-label">Deliverability</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="heading-font stat-number" style="color: var(--accent-purple);">4.8x</div>
-                        <div class="stat-label">Avg. ROI</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="heading-font stat-number" style="color: var(--accent-lime);">24/7</div>
-                        <div class="stat-label">Support</div>
-                    </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Какие документы нужны для эвакуации?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Для эвакуации потребуется ваш паспорт и свидетельство о регистрации транспортного средства (СТС). При эвакуации после ДТП также понадобится справка из ГИБДД.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Можно ли ехать в кабине эвакуатора?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, владелец автомобиля или его представитель может сопровождать груз в кабине эвакуатора. Это бесплатно и часто рекомендуется для контроля за процессом транспортировки.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Что делать, если автомобиль эвакуирован на штрафстоянку?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Необходимо получить протокол об эвакуации в ГИБДД, оплатить штраф и услуги эвакуации, после чего вы сможете забрать автомобиль со штрафстоянки. Сделать это нужно как можно быстрее, так как каждый день хранения оплачивается отдельно.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Покрывает ли страховка стоимость эвакуации?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Это зависит от условий вашего полиса. Многие страховые компании включают эвакуацию в пакет КАСКО. Рекомендуем заранее уточнить этот момент у вашего страховщика и сохранить все чеки об оплате услуг.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Эвакуируют ли автомобили с автоматической коробкой передач?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, автомобили с АКПП эвакуируются методом частичной или полной погрузки на платформу эвакуатора. Буксировка автомобилей с автоматической коробкой запрещена, так как это может привести к серьёзным поломкам трансмиссии.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Newsletter Examples -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-font">Templates that<br>stand out</h2>
-                <p>Stunning designs for every use case</p>
-            </div>
-
-            <div class="bento-grid">
-                <div class="newsletter-card glass-card" data-color="#c4ff00">
-                    <div class="card-glow" style="background: #c4ff00;"></div>
-                    <div>
-                        <div class="card-emoji">💌</div>
-                        <div class="heading-font card-title">Welcome Series</div>
-                        <div class="card-desc">Professional templates ready to customize</div>
-                    </div>
-                    <div class="card-link" style="color: #c4ff00;">
-                        Preview template
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="newsletter-card glass-card" data-color="#6366f1">
-                    <div class="card-glow" style="background: #6366f1;"></div>
-                    <div>
-                        <div class="card-emoji">📊</div>
-                        <div class="heading-font card-title">Analytics Reports</div>
-                        <div class="card-desc">Professional templates ready to customize</div>
-                    </div>
-                    <div class="card-link" style="color: #6366f1;">
-                        Preview template
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="newsletter-card glass-card" data-color="#ec4899">
-                    <div class="card-glow" style="background: #ec4899;"></div>
-                    <div>
-                        <div class="card-emoji">🎯</div>
-                        <div class="heading-font card-title">Promotional Blast</div>
-                        <div class="card-desc">Professional templates ready to customize</div>
-                    </div>
-                    <div class="card-link" style="color: #ec4899;">
-                        Preview template
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="newsletter-card glass-card" data-color="#8b5cf6">
-                    <div class="card-glow" style="background: #8b5cf6;"></div>
-                    <div>
-                        <div class="card-emoji">🔔</div>
-                        <div class="heading-font card-title">Event Reminders</div>
-                        <div class="card-desc">Professional templates ready to customize</div>
-                    </div>
-                    <div class="card-link" style="color: #8b5cf6;">
-                        Preview template
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Cards -->
-            <div class="feature-grid">
-                <div class="glass-card feature-card">
-                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                    </svg>
-                    <h3 class="heading-font feature-title">AI-Powered Content</h3>
-                    <p class="feature-desc">Generate subject lines and copy that convert</p>
-                </div>
-
-                <div class="glass-card feature-card">
-                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-                    </svg>
-                    <h3 class="heading-font feature-title">Deep Analytics</h3>
-                    <p class="feature-desc">Track opens, clicks, and conversions in real-time</p>
-                </div>
-
-                <div class="glass-card feature-card">
-                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                    <h3 class="heading-font feature-title">Smart Segmentation</h3>
-                    <p class="feature-desc">Target the right audience with precision</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-font">Simple,<br>transparent pricing</h2>
-                <p>Choose the plan that fits your needs</p>
-            </div>
-
-            <div class="pricing-grid">
-                <!-- Starter -->
-                <div class="glass-card pricing-card">
-                    <h3 class="heading-font pricing-name">Starter</h3>
-                    <p class="pricing-desc">Perfect for solo creators</p>
-                    <div class="pricing-price heading-font">
-                        <span style="color: var(--accent-lime);">$29</span>
-                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
-                    </div>
-                    <button class="btn btn-secondary pricing-btn">Get started</button>
-                    <ul class="pricing-features">
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Up to 1,000 subscribers</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>10,000 emails/month</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Basic templates</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Email support</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Analytics dashboard</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Growth (Popular) -->
-                <div class="glass-card pricing-card" style="border: 2px solid var(--accent-purple);">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <h3 class="heading-font pricing-name">Growth</h3>
-                    <p class="pricing-desc">For growing teams</p>
-                    <div class="pricing-price heading-font">
-                        <span style="color: var(--accent-purple);">$79</span>
-                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
-                    </div>
-                    <button class="btn btn-primary pricing-btn">Get started</button>
-                    <ul class="pricing-features">
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Up to 10,000 subscribers</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>100,000 emails/month</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Advanced templates</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Priority support</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>A/B testing</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Automation flows</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Custom domains</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Enterprise -->
-                <div class="glass-card pricing-card">
-                    <h3 class="heading-font pricing-name">Enterprise</h3>
-                    <p class="pricing-desc">Unlimited scale</p>
-                    <div class="pricing-price heading-font">
-                        <span style="color: var(--accent-lime);">$249</span>
-                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
-                    </div>
-                    <button class="btn btn-secondary pricing-btn">Get started</button>
-                    <ul class="pricing-features">
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Unlimited subscribers</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Unlimited emails</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>White-label solution</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>24/7 dedicated support</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Advanced automation</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>API access</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>Custom integrations</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>SLA guarantee</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Client Logos -->
-    <section class="clients-section">
-        <div class="container">
-            <p class="clients-label">Trusted by industry leaders</p>
-            <div class="clients-grid">
-                <div class="heading-font client-logo">Stripe</div>
-                <div class="heading-font client-logo">Notion</div>
-                <div class="heading-font client-logo">Linear</div>
-                <div class="heading-font client-logo">Vercel</div>
-                <div class="heading-font client-logo">Figma</div>
-                <div class="heading-font client-logo">Discord</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-font">Common questions</h2>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item glass-card">
-                    <button class="faq-question" onclick="toggleFaq(0)">
-                        <span class="heading-font">How does the free trial work?</span>
-                        <svg class="faq-icon" id="faq-icon-0" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer" id="faq-answer-0">
-                        <div class="faq-answer-content">
-                            Start with a 14-day free trial, no credit card required. Full access to Growth features.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card">
-                    <button class="faq-question" onclick="toggleFaq(1)">
-                        <span class="heading-font">Can I change plans anytime?</span>
-                        <svg class="faq-icon" id="faq-icon-1" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer" id="faq-answer-1">
-                        <div class="faq-answer-content">
-                            Yes, upgrade or downgrade anytime. Changes take effect immediately with prorated billing.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card">
-                    <button class="faq-question" onclick="toggleFaq(2)">
-                        <span class="heading-font">What happens if I exceed my subscriber limit?</span>
-                        <svg class="faq-icon" id="faq-icon-2" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer" id="faq-answer-2">
-                        <div class="faq-answer-content">
-                            We'll notify you before any overage charges. You can upgrade or remove inactive subscribers.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card">
-                    <button class="faq-question" onclick="toggleFaq(3)">
-                        <span class="heading-font">Do you offer refunds?</span>
-                        <svg class="faq-icon" id="faq-icon-3" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer" id="faq-answer-3">
-                        <div class="faq-answer-content">
-                            Yes, 30-day money-back guarantee on annual plans. Monthly plans are non-refundable.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card">
-                    <button class="faq-question" onclick="toggleFaq(4)">
-                        <span class="heading-font">Is my data secure?</span>
-                        <svg class="faq-icon" id="faq-icon-4" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer" id="faq-answer-4">
-                        <div class="faq-answer-content">
-                            Enterprise-grade security with SOC 2 compliance, encryption at rest and in transit, and GDPR compliance.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand heading-font">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        MailFlow
-                    </div>
-                    <p class="footer-desc">
-                        The modern email marketing platform built for creators and teams.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="heading-font footer-title">Product</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Templates</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="heading-font footer-title">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="heading-font footer-title">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">GDPR</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>© 2026 MailFlow. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="#">Twitter</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                </div>
-            </div>
-        </div>
+        <p>&copy; 2026 EVAC24 - Служба Эвакуации Автомобилей. Все права защищены.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Работаем круглосуточно для вашего спокойствия</p>
     </footer>
-
+    
     <script>
         // FAQ Toggle
-        function toggleFaq(index) {
-            const answer = document.getElementById(`faq-answer-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
             
-            // Close all other FAQs
-            for (let i = 0; i < 5; i++) {
-                if (i !== index) {
-                    document.getElementById(`faq-answer-${i}`).classList.remove('active');
-                    document.getElementById(`faq-icon-${i}`).classList.remove('active');
+            allItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
                 }
-            }
+            });
             
-            // Toggle current FAQ
-            answer.classList.toggle('active');
-            icon.classList.toggle('active');
+            faqItem.classList.toggle('active');
         }
-
-        // Smooth scroll
+        
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
                 }
             });
         });
-
-        // Pricing card hover effect
-        const pricingCards = document.querySelectorAll('.pricing-card');
-        pricingCards.forEach(card => {
-            const btn = card.querySelector('.pricing-btn');
-            const isPopular = card.style.borderColor === 'rgb(99, 102, 241)';
-            const accentColor = isPopular ? '#6366f1' : '#c4ff00';
-            
-            card.addEventListener('mouseenter', () => {
-                if (btn && !isPopular) {
-                    btn.style.background = accentColor;
-                    btn.style.color = '#000000';
+        
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.querySelector('.scroll-progress').style.width = scrolled + '%';
+        });
+        
+        // Scroll Animation for Cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
                 }
             });
-            
-            card.addEventListener('mouseleave', () => {
-                if (btn && !isPopular) {
-                    btn.style.background = 'var(--glass-bg)';
-                    btn.style.color = 'var(--text-primary)';
-                }
-            });
+        }, observerOptions);
+        
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Header background on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
