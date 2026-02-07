@@ -1,1156 +1,1145 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <title>Живые Сказки | Дед Мороз и Снегурочка в Москве 2025 | Заказ ростовых кукол на Новый год</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Дед Мороз и ростовые куклы в Ярославле | Живые Сказки">
-    <meta property="og:description" content="Премиум-аниматоры на Новый год, детский день рождения или праздник в Ярославской области.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="icyou.ru">
-    <meta property="og:title" content="Дед Мороз и ростовые куклы в Ярославле | Живые Сказки">
-    <meta property="og:description" content="Премиум-аниматоры на Новый год, детский день рождения или праздник в Ярославской области.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="icyou.ru">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    
+    <title>MailFlow - Modern Email Marketing</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Outfit:wght@300;400;500;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* ========================================
-           НОВАЯ ПАЛИТРА: "КИСЛОТНЫЙ ХАОС 2.0"
-        ======================================== */
         :root {
-            --bg-primary: #0D0D0D;
-            --accent-primary: #da3b97c2; /* Кислотно-желтый */
-            --text-primary: #FFFFFF;
-            --text-secondary: #AAAAAA;
-            --border-color: #333333;
+            --bg-primary: #000000;
+            --bg-secondary: #0d0d0d;
+            --accent-lime: #c4ff00;
+            --accent-purple: #6366f1;
+            --accent-pink: #ec4899;
+            --accent-violet: #8b5cf6;
+            --text-primary: #ffffff;
+            --text-secondary: #6b7280;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* ========================================
-           ФИШКА: ФОН-СЕТКА И NOISE
-        ======================================== */
         body {
-            font-family: 'IBM Plex Mono', monospace; /* Моноширинный шрифт */
-            background-color: var(--bg-primary);
-            /* Фон в виде сетки */
-            background-image: 
-                linear-gradient(var(--border-color) 1px, transparent 1px), 
-                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-            background-size: 25px 25px;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        /* ФИШКА: Эффект "Noise" (шум) */
-        body::after {
-            content: '';
+        .heading-font {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Noise Overlay */
+        .noise-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            background-size: cover;
-            opacity: 0.05;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 1001;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            z-index: 9999;
         }
 
-        /* Общий контейнер (НЕ ЦЕНТРИРОВАННЫЙ) */
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 5vw; /* Используем vw для отступов */
+        /* Glass Card Effect */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Gradient Meshes */
+        .gradient-mesh {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
             position: relative;
-            z-index: 1;
-        }
-
-        /* ========================================
-           HEADER (БРУТАЛЬНЫЙ)
-        ======================================== */
-        .header {
-            position: absolute; /* Не fixed! */
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 24px 5vw;
-            z-index: 1000;
-            border-bottom: 2px solid var(--border-color);
-            background: var(--bg-primary);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', sans-serif; /* Новый шрифт */
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            background: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: var(--accent-primary);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px 10px;
-        }
-
-        /* ========================================
-           HERO (СЛОМАННЫЙ МАКЕТ)
-        ======================================== */
-        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 150px 5vw 80px;
-            position: relative;
+            justify-content: center;
+            padding: 5rem 0;
             overflow: hidden;
         }
 
-        .hero-content {
-            display: block;
-            position: relative;
-            width: 100%;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
         }
 
-        .hero-text h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 12vw;
-            font-weight: 700;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-            background: none;
-            z-index: 2;
-            position: relative;
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-text p {
-            font-size: 18px;
+        .glow-text {
+            color: var(--accent-lime);
+            text-shadow: 0 0 40px rgba(196, 255, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
             color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 450px;
-            z-index: 2;
-            position: relative;
+            max-width: 42rem;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            z-index: 2;
-            position: relative;
-        }
-
-        /* ФИШКА: Рваные кнопки (Clip-path) */
-        .btn-primary, .btn-secondary {
-            padding: 18px 36px;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            font-weight: 400;
-            font-size: 20px;
-            text-decoration: none;
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-primary);
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+            text-decoration: none;
         }
 
         .btn-primary {
-            background: var(--accent-primary);
-            color: #0D0D0D;
+            background: var(--accent-lime);
+            color: var(--bg-primary);
         }
 
         .btn-primary:hover {
-            background: var(--bg-primary);
-            color: var(--accent-primary);
-            transform: skew(-5deg);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(196, 255, 0, 0.4);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--accent-primary);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
         }
 
         .btn-secondary:hover {
-            background: var(--accent-primary);
-            color: #0D0D0D;
-            transform: skew(-5deg);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Картинки наезжают на текст (position: absolute) */
-        .hero-images {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            width: 60%;
-            height: 80vh;
-            z-index: 1;
-        }
-
-        /* ФИШКА: Glitch Art (CSS) */
-        .glitch-wrapper {
-            position: absolute;
-            overflow: hidden;
-            border: 2px solid var(--accent-primary);
-            animation: glitch-border 5s infinite;
-        }
-        
-        @keyframes glitch-border {
-            0%, 100% { clip-path: inset(0 0 0 0); }
-            10% { clip-path: inset(90% 0 0 0); }
-            20% { clip-path: inset(0 0 90% 0); }
-            30% { clip-path: inset(0 0 0 90%); }
-            40% { clip-path: inset(0 90% 0 0); }
-            50% { clip-path: inset(30% 0 30% 0); }
-        }
-
-        .glitch-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9;
-            animation: glitch-img-anim 3s infinite steps(8);
-        }
-        
-        @keyframes glitch-img-anim {
-            0% { transform: translate(0, 0); }
-            10% { transform: translate(-5px, 5px); }
-            20% { transform: translate(5px, -5px); }
-            30% { transform: translate(-8px, 2px); }
-            40% { transform: translate(2px, -8px); }
-            50% { transform: translate(0, 0); }
-            100% { transform: translate(0, 0); }
-        }
-
-        .hero-image-1 {
-            width: 60%;
-            height: 70%;
-            top: 0;
-            left: 0;
-        }
-
-        .hero-image-2 {
-            width: 55%;
-            height: 60%;
-            bottom: 0;
-            right: 0;
-            animation-delay: 1.5s;
-        }
-        
-        /* ========================================
-           ФИШКА: "БЕГУЩАЯ СТРОКА" (MARQUEE)
-        ======================================== */
-        .marquee {
-            padding: 40px 0;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            border-top: 2px solid var(--accent-primary);
-            border-bottom: 2px solid var(--accent-primary);
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4vw;
-            display: inline-block;
-            animation: marquee-scroll 20s linear infinite;
-        }
-        .marquee-content span {
-            margin: 0 40px;
-        }
-        
-        @keyframes marquee-scroll {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* ========================================
-           FEATURES (СЛОМАННАЯ СЕТКА)
-        ======================================== */
-        .features {
-            padding: 120px 5vw;
-        }
-
-        .section-header {
-            text-align: left;
-            margin-bottom: 60px;
-            max-width: 600px;
-        }
-
-        .section-label {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 6vw;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-        }
-
-        /* Сетка брутализма */
-        .features-grid {
+        /* Stats */
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--border-color);
-            border: 2px solid var(--border-color);
+            gap: 2rem;
+            max-width: 48rem;
+            margin: 4rem auto 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .newsletter-card {
+            position: relative;
+            height: 16rem;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .newsletter-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent-lime), var(--accent-purple), var(--accent-lime));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
+        }
+
+        .card-glow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+
+        .card-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .newsletter-card:hover .card-link {
+            transform: translateX(0.5rem);
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
         .feature-card {
-            background: var(--bg-primary);
-            border: none;
-            border-radius: 0;
-            padding: 32px;
-            transition: all 0.3s ease;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .feature-card:hover {
-            background: #1a1a1a;
-            transform: translate(-10px, -10px);
-            box-shadow: 10px 10px 0 var(--accent-primary);
-            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            padding: 1.5rem;
+            border-radius: 1rem;
         }
 
         .feature-icon {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 48px;
-            color: var(--accent-primary);
-            margin-bottom: 20px;
+            width: 2rem;
+            height: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .feature-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 32px;
+        .feature-title {
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
-        .feature-card p {
+        .feature-desc {
             color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 15px;
+            font-size: 0.875rem;
         }
 
-        /* ========================================
-           CONTENT SECTION (БРУТАЛЬНЫЙ FLEX)
-        ======================================== */
-        .content-section {
-            padding: 80px 5vw;
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .content-grid {
-            display: flex;
-            gap: 60px;
-            align-items: flex-start;
-        }
-        
-        .content-grid.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .content-images {
-            flex: 1;
-        }
-        
-        .content-image-wrapper {
+        .pricing-card {
             position: relative;
-            border: 2px solid var(--accent-primary);
-            animation: glitch-border 4s infinite reverse;
-        }
-        .content-image-wrapper img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            animation: glitch-img-anim 2s infinite steps(5);
-        }
-        
-        .content-text {
-            flex: 1;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .content-text h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4vw;
+        .pricing-card:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1;
+            background: var(--accent-purple);
         }
 
-        .content-text p {
-            font-size: 18px;
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-desc {
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.8;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
         }
 
-        .content-list {
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
             list-style: none;
         }
 
-        /* Список в стиле "терминал" */
-        .content-list li {
-            padding: 12px 0;
-            padding-left: 30px;
-            position: relative;
-            font-size: 16px;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .content-list li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            font-size: 16px;
-            color: var(--accent-primary);
-            font-weight: 700;
-        }
-
-        /* ========================================
-           GALLERY (КОЛЛАЖ)
-        ======================================== */
-        .gallery {
-            padding: 120px 5vw;
-            background: var(--bg-primary);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 300px;
-            gap: 10px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid var(--accent-primary);
-            clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
-        }
-        
-        /* Делаем "коллаж" */
-        .gallery-item:nth-child(1) {
-            grid-column: span 2;
-            grid-row: span 2;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
-        .gallery-item:nth-child(2) {
-            grid-column: span 1;
-        }
-        .gallery-item:nth-child(3) {
-            grid-column: span 1;
-            grid-row: span 2;
-            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
-        }
-        .gallery-item:nth-child(4) {
-            grid-column: span 2;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* ========================================
-           REVIEWS (СЛАЙДЕР SWIPER В БРУТАЛЬНОМ СТИЛЕ)
-        ======================================== */
-        .reviews {
-            padding: 120px 5vw;
-        }
-
-        .reviews-slider {
-            padding: 40px 0;
-            margin-left: -2vw;
-        }
-
-        .review-card {
-            background: var(--bg-primary);
-            border: 2px solid var(--border-color);
-            border-radius: 0;
-            padding: 10px;
-            height: auto;
-            /* УБРАЛИ УГЛЫ ДЛЯ ЧИТАЕМОСТИ ФОТО */
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .review-card img {
-            width: 100%;
-            height: auto; /* АВТОМАТИЧЕСКАЯ ВЫСОТА */
-            max-height: 500px; /* Ограничение, если фото слишком длинное */
-            object-fit: contain; /* ВМЕЩАЕМ ВЕСЬ СКРИНШОТ */
-            border-radius: 0;
-            border: 1px solid var(--accent-primary);
-        }
-
-        /* Стиль для Swiper навигации (желтые кнопки, без скруглений) */
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--bg-primary) !important;
-            background: var(--accent-primary);
-            border: 2px solid var(--accent-primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 0;
-            transition: all 0.2s ease;
-        }
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-            background: var(--bg-primary);
-            color: var(--accent-primary) !important;
-        }
-
-        .swiper-button-next::after, .swiper-button-prev::after {
-            font-size: 20px !important;
-            font-weight: bold;
-        }
-
-        .swiper-pagination-bullet {
-            background: var(--border-color) !important;
-            border-radius: 0;
-            width: 10px;
-            height: 10px;
-            opacity: 0.6;
-            transition: all 0.2s ease;
-        }
-
-        .swiper-pagination-bullet-active {
-            background: var(--accent-primary) !important;
-            opacity: 1;
-            width: 16px;
-            height: 16px;
-        }
-
-
-        /* ========================================
-           CTA SECTION (БРУТАЛЬНЫЙ)
-        ======================================== */
-        .cta-section {
-            padding: 120px 5vw;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-        }
-
-        .cta-content {
-            text-align: left;
-            max-width: 100%;
-        }
-        
-        .cta-content .section-label {
-            background: var(--bg-primary);
-            color: var(--accent-primary);
-        }
-        
-        .cta-content .section-subtitle {
-            color: #333;
-        }
-
-        .phone-display {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 8vw;
-            font-weight: 700;
-            color: var(--bg-primary);
-            background: none;
-            margin: 20px 0;
-            line-height: 1;
-        }
-
-        .social-buttons {
+        .pricing-features li {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        
-        .social-btn {
-            padding: 18px 36px;
-            border-radius: 0;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            font-weight: 400;
-            font-size: 20px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
-        }
-        
-        .social-btn:hover {
-            transform: skew(-5deg);
-        }
-        .whatsapp { background: #25D366; color: var(--bg-primary); }
-        .telegram { background: #0088CC; color: var(--bg-primary); }
-        .whatsapp:hover { background: var(--bg-primary); color: #25D366; }
-        .telegram:hover { background: var(--bg-primary); color: #0088CC; }
-
-        /* ========================================
-           FOOTER
-        ======================================== */
-        .footer {
-            padding: 40px 5vw;
-            text-align: left;
-            border-top: 2px solid var(--border-color);
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #d1d5db;
         }
 
-        .footer p {
+        .check-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Client Logos */
+        .clients-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .clients-label {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
         }
 
-        /* ========================================
-           MODAL
-        ======================================== */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            opacity: 0.5;
         }
 
-        .modal-content {
-            margin: 5% auto;
-            display: block;
-            max-width: 90%;
-            max-height: 85vh;
-            object-fit: contain;
-            border: 2px solid var(--accent-primary);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 30px;
-            right: 5vw;
-            color: var(--accent-primary);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 40px;
-            font-weight: bold;
+        .client-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: opacity 0.3s ease;
             cursor: pointer;
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 6rem 0;
+        }
+
+        .faq-container {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            font-size: 1.125rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .close-modal:hover {
+        .footer-links a:hover {
             color: var(--text-primary);
         }
 
-        /* SNOW */
-        #snow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
 
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-                opacity: 0.2;
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
             }
         }
 
-        /* ========== АДАПТАЦИЯ (ТЕЛЕФОНЫ) ========== */
-        @media (max-width: 768px) {
-            .container { padding: 0 5vw; }
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
 
-            /* Header Mobile */
-            .menu-toggle { display: block; }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: var(--bg-primary);
-                flex-direction: column;
-                padding: 100px 30px 40px;
-                transition: right 0.4s ease;
-                gap: 0;
-            }
-            .nav-menu.active { right: 0; }
-            .nav-menu li { margin: 0; padding: 16px 0; border-bottom: 1px solid var(--border-color); }
-            .nav-menu a { display: block; font-size: 24px; }
+        .footer-social a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-            /* Hero Mobile */
-            .hero { padding-top: 120px; }
-            .hero-text h1 { font-size: 18vw; }
-            .hero-text p { font-size: 16px; }
-            .hero-buttons { flex-direction: column; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            
-            /* Картинки убираем на мобилках, слишком хаотично */
-            .hero-images { display: none; }
+        .footer-social a:hover {
+            color: var(--text-primary);
+        }
 
-            /* Features Mobile */
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            .feature-card:hover {
-                transform: none;
-                box-shadow: none;
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
 
-            /* Content Mobile */
-            .content-grid {
-                flex-direction: column;
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
             }
-            .content-grid.reverse {
-                flex-direction: column;
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
             }
-            .content-text h2 { font-size: 10vw; }
+        }
 
-            /* Gallery Mobile */
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-                grid-auto-rows: 200px;
-            }
-            /* Сбрасываем коллаж */
-            .gallery-item,
-            .gallery-item:nth-child(1),
-            .gallery-item:nth-child(2),
-            .gallery-item:nth-child(3),
-            .gallery-item:nth-child(4) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+        .stagger-5 { animation-delay: 0.5s; opacity: 0; }
 
-            /* Reviews Mobile */
-            .reviews-slider {
-                padding: 20px 0;
-                margin-left: 0;
-            }
-            .review-card img { max-height: 300px; } /* Уменьшаем макс. высоту для мобильных */
-            .swiper-button-next, .swiper-button-prev { width: 40px; height: 40px; }
-            .swiper-button-next::after, .swiper-button-prev::after { font-size: 16px !important; }
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-            /* CTA Mobile */
-            .phone-display { font-size: 12vw; }
-            .social-buttons { flex-direction: column; }
-            .social-btn { width: 100%; justify-content: center; }
+        .section-title h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
         }
     </style>
 </head>
 <body>
-    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
 
-<div id="snow-container"></div>
-
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo">ЖИВЫЕ СКАЗКИ</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#features">УСЛУГИ</a></li>
-                    <li><a href="#about">О НАС</a></li>
-                    <li><a href="#gallery">ГАЛЕРЕЯ</a></li>
-                    <li><a href="#reviews">ОТЗЫВЫ</a></li>
-                    <li><a href="#contact">КОНТАКТЫ</a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle">[МЕНЮ]</button>
-        </div>
-    </header>
-
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Gradient Meshes -->
+        <div class="gradient-mesh" style="background: var(--accent-lime); top: -200px; left: -200px;"></div>
+        <div class="gradient-mesh" style="background: var(--accent-purple); bottom: -200px; right: -200px;"></div>
+        
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Магия праздника в каждом моменте</h1>
-                    <p>Профессиональные аниматоры и премиум ростовые куклы для незабываемых детских праздников в Ярославле</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn-primary">ЗАКАЗАТЬ ПРАЗДНИК</a>
-                        <a href="#gallery" class="btn-secondary">СМОТРЕТЬ РАБОТЫ</a>
+            <div style="text-align: center;">
+                <div class="fade-in stagger-1">
+                    <div class="glass-card hero-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-lime);">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <span>Trusted by 50,000+ creators</span>
                     </div>
                 </div>
                 
-                <div class="hero-images">
-                    <div class="glitch-wrapper hero-image-1">
-                        <img src="img/snegurka.jpg" alt="Снегурочка">
+                <h1 class="heading-font hero-title fade-in stagger-2">
+                    Email marketing<br>
+                    <span class="glow-text">that converts</span>
+                </h1>
+                
+                <p class="hero-subtitle fade-in stagger-3">
+                    Build, grow, and engage your audience with AI-powered campaigns that feel personal at scale
+                </p>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;" class="fade-in stagger-4">
+                    <button class="btn btn-primary">
+                        Start free trial
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary glass-card">
+                        Watch demo
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid fade-in stagger-5">
+                    <div class="stat-item">
+                        <div class="heading-font stat-number" style="color: var(--accent-lime);">99.9%</div>
+                        <div class="stat-label">Deliverability</div>
                     </div>
-                    <div class="glitch-wrapper hero-image-2">
-                        <img src="img/mishka.jpg" alt="Ростовая кукла">
+                    <div class="stat-item">
+                        <div class="heading-font stat-number" style="color: var(--accent-purple);">4.8x</div>
+                        <div class="stat-label">Avg. ROI</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="heading-font stat-number" style="color: var(--accent-lime);">24/7</div>
+                        <div class="stat-label">Support</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="marquee">
-        <div class="marquee-content">
-            <span>*** 30 МИНУТ ЧУДА ***</span>
-            <span>*** ЭФФЕКТ WOW! ***</span>
-            <span>*** ПРЕМИУМ КОСТЮМЫ ***</span>
-            <span>*** ДЕД МОРОЗ И СНЕГУРОЧКА ***</span>
-            <span>*** РОСТОВЫЕ КУКЛЫ ***</span>
-            <span>*** 30 МИНУТ ЧУДА ***</span>
-            <span>*** ЭФФЕКТ WOW! ***</span>
-            <span>*** ПРЕМИУМ КОСТЮМЫ ***</span>
-            <span>*** ДЕД МОРОЗ И СНЕГУРОЧКА ***</span>
-            <span>*** РОСТОВЫЕ КУКЛЫ ***</span>
-        </div>
-    </section>
-
-    <section id="features" class="features">
+    <!-- Newsletter Examples -->
+    <section>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">НАШИ УСЛУГИ</span>
-                <h2 class="section-title">ЧТО МЫ ПРЕДЛАГАЕМ</h2>
-                <p class="section-subtitle">Экспресс-поздравления и полноценные программы для любого повода</p>
+            <div class="section-title">
+                <h2 class="heading-font">Templates that<br>stand out</h2>
+                <p>Stunning designs for every use case</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">[01]</div>
-                    <h3>30 минут чуда</h3>
-                    <p>Экспресс-поздравление с играми, стихами и волшебством. Идеально для тех, у кого мало времени, но много ожидания!</p>
+
+            <div class="bento-grid">
+                <div class="newsletter-card glass-card" data-color="#c4ff00">
+                    <div class="card-glow" style="background: #c4ff00;"></div>
+                    <div>
+                        <div class="card-emoji">💌</div>
+                        <div class="heading-font card-title">Welcome Series</div>
+                        <div class="card-desc">Professional templates ready to customize</div>
+                    </div>
+                    <div class="card-link" style="color: #c4ff00;">
+                        Preview template
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">[02]</div>
-                    <h3>Эффект WOW!</h3>
-                    <p>Вручение подарка, зажигательная песня и фото на память. Создаем взрыв чистой радости и смеха!</p>
+
+                <div class="newsletter-card glass-card" data-color="#6366f1">
+                    <div class="card-glow" style="background: #6366f1;"></div>
+                    <div>
+                        <div class="card-emoji">📊</div>
+                        <div class="heading-font card-title">Analytics Reports</div>
+                        <div class="card-desc">Professional templates ready to customize</div>
+                    </div>
+                    <div class="card-link" style="color: #6366f1;">
+                        Preview template
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">[03]</div>
-                    <h3>Премиум костюмы</h3>
-                    <p>Безупречные образы: богатая отделка, блеск и внимание к каждой детали. Настоящая сказка!</p>
+
+                <div class="newsletter-card glass-card" data-color="#ec4899">
+                    <div class="card-glow" style="background: #ec4899;"></div>
+                    <div>
+                        <div class="card-emoji">🎯</div>
+                        <div class="heading-font card-title">Promotional Blast</div>
+                        <div class="card-desc">Professional templates ready to customize</div>
+                    </div>
+                    <div class="card-link" style="color: #ec4899;">
+                        Preview template
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="newsletter-card glass-card" data-color="#8b5cf6">
+                    <div class="card-glow" style="background: #8b5cf6;"></div>
+                    <div>
+                        <div class="card-emoji">🔔</div>
+                        <div class="heading-font card-title">Event Reminders</div>
+                        <div class="card-desc">Professional templates ready to customize</div>
+                    </div>
+                    <div class="card-link" style="color: #8b5cf6;">
+                        Preview template
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="feature-grid">
+                <div class="glass-card feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    <h3 class="heading-font feature-title">AI-Powered Content</h3>
+                    <p class="feature-desc">Generate subject lines and copy that convert</p>
+                </div>
+
+                <div class="glass-card feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <h3 class="heading-font feature-title">Deep Analytics</h3>
+                    <p class="feature-desc">Track opens, clicks, and conversions in real-time</p>
+                </div>
+
+                <div class="glass-card feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <h3 class="heading-font feature-title">Smart Segmentation</h3>
+                    <p class="feature-desc">Target the right audience with precision</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="content-section">
+    <!-- Pricing Section -->
+    <section>
         <div class="container">
-            <div class="content-grid">
-                <div class="content-images">
-                    <div class="glitch-wrapper content-image-wrapper">
-                        <img src="img/ex2.jpg" alt="Ростовая кукла" class="zoomable">
+            <div class="section-title">
+                <h2 class="heading-font">Simple,<br>transparent pricing</h2>
+                <p>Choose the plan that fits your needs</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter -->
+                <div class="glass-card pricing-card">
+                    <h3 class="heading-font pricing-name">Starter</h3>
+                    <p class="pricing-desc">Perfect for solo creators</p>
+                    <div class="pricing-price heading-font">
+                        <span style="color: var(--accent-lime);">$29</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
                     </div>
+                    <button class="btn btn-secondary pricing-btn">Get started</button>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Up to 1,000 subscribers</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>10,000 emails/month</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Basic templates</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Email support</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Analytics dashboard</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="content-text">
-                    <h2>Ростовые куклы оживают</h2>
-                    <p>Представьте восторг вашего ребенка, когда его придет поздравить огромный, добрый и пушистый герой из любимого мультфильма!</p>
-                    <ul class="content-list">
-                        <li>Поздравления с любым праздником</li>
-                        <li>Выписки из роддома</li>
-                        <li>Вручение подарков и цветов</li>
-                        <li>Встреча гостей (велком зона)</li>
+
+                <!-- Growth (Popular) -->
+                <div class="glass-card pricing-card" style="border: 2px solid var(--accent-purple);">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3 class="heading-font pricing-name">Growth</h3>
+                    <p class="pricing-desc">For growing teams</p>
+                    <div class="pricing-price heading-font">
+                        <span style="color: var(--accent-purple);">$79</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
+                    </div>
+                    <button class="btn btn-primary pricing-btn">Get started</button>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Up to 10,000 subscribers</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>100,000 emails/month</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Advanced templates</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Priority support</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>A/B testing</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Automation flows</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Custom domains</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass-card pricing-card">
+                    <h3 class="heading-font pricing-name">Enterprise</h3>
+                    <p class="pricing-desc">Unlimited scale</p>
+                    <div class="pricing-price heading-font">
+                        <span style="color: var(--accent-lime);">$249</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/month</span>
+                    </div>
+                    <button class="btn btn-secondary pricing-btn">Get started</button>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Unlimited subscribers</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Unlimited emails</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>White-label solution</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>24/7 dedicated support</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Advanced automation</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>API access</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Custom integrations</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>SLA guarantee</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="content-section">
+    <!-- Client Logos -->
+    <section class="clients-section">
         <div class="container">
-            <div class="content-grid reverse">
-                <div class="content-text">
-                    <h2>Дед Мороз и Снегурочка с душой</h2>
-                    <p>Наши актеры — настоящие профессионалы. Они найдут подход к любому ребенку, поиграют, послушают стихи и подарят веру в чудо!</p>
-                    <ul class="content-list">
-                        <li>Сюжетные программы на дому (от 25 минут)</li>
-                        <li>Выступления на корпоративах</li>
-                        <li>Утренники в детских садах</li>
-                        <li>Индивидуальный сценарий для каждого ребенка</li>
+            <p class="clients-label">Trusted by industry leaders</p>
+            <div class="clients-grid">
+                <div class="heading-font client-logo">Stripe</div>
+                <div class="heading-font client-logo">Notion</div>
+                <div class="heading-font client-logo">Linear</div>
+                <div class="heading-font client-logo">Vercel</div>
+                <div class="heading-font client-logo">Figma</div>
+                <div class="heading-font client-logo">Discord</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="heading-font">Common questions</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(0)">
+                        <span class="heading-font">How does the free trial work?</span>
+                        <svg class="faq-icon" id="faq-icon-0" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-0">
+                        <div class="faq-answer-content">
+                            Start with a 14-day free trial, no credit card required. Full access to Growth features.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(1)">
+                        <span class="heading-font">Can I change plans anytime?</span>
+                        <svg class="faq-icon" id="faq-icon-1" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-1">
+                        <div class="faq-answer-content">
+                            Yes, upgrade or downgrade anytime. Changes take effect immediately with prorated billing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(2)">
+                        <span class="heading-font">What happens if I exceed my subscriber limit?</span>
+                        <svg class="faq-icon" id="faq-icon-2" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-2">
+                        <div class="faq-answer-content">
+                            We'll notify you before any overage charges. You can upgrade or remove inactive subscribers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(3)">
+                        <span class="heading-font">Do you offer refunds?</span>
+                        <svg class="faq-icon" id="faq-icon-3" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-3">
+                        <div class="faq-answer-content">
+                            Yes, 30-day money-back guarantee on annual plans. Monthly plans are non-refundable.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(4)">
+                        <span class="heading-font">Is my data secure?</span>
+                        <svg class="faq-icon" id="faq-icon-4" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-4">
+                        <div class="faq-answer-content">
+                            Enterprise-grade security with SOC 2 compliance, encryption at rest and in transit, and GDPR compliance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand heading-font">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        MailFlow
+                    </div>
+                    <p class="footer-desc">
+                        The modern email marketing platform built for creators and teams.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="heading-font footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">API</a></li>
                     </ul>
                 </div>
-                <div class="content-images">
-                    <div class="glitch-wrapper content-image-wrapper">
-                        <img src="img/snegurka.jpg" alt="Снегурочка" class="zoomable">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">ПОРТФОЛИО</span>
-                <h2 class="section-title">НАШИ РАБОТЫ</h2>
-                <p class="section-subtitle">Моменты радости, запечатленные навсегда</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="img/deti1.jpg" alt="Работа 1" class="zoomable">
+                <div>
+                    <h4 class="heading-font footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="gallery-item">
-                    <img src="img/deti2.jpg" alt="Работа 2" class="zoomable">
-                </div>
-                <div class="gallery-item">
-                    <img src="img/kukla1.jpg" alt="Работа 3" class="zoomable">
-                </div>
-                <div class="gallery-item">
-                    <img src="img/ex1.jpg" alt="Работа 4" class="zoomable">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="reviews" class="reviews">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">ОТЗЫВЫ</span>
-                <h2 class="section-title">ЧТО ГОВОРЯТ КЛИЕНТЫ</h2>
-                <p class="section-subtitle">Более 1000 счастливых семей доверили нам свои праздники</p>
-            </div>
-            
-            <div class="swiper reviews-slider">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz1.jpg" alt="Отзыв 1">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz2.jpg" alt="Отзыв 2">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz3.jpg" alt="Отзыв 3">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz4.jpg" alt="Отзыв 4">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz5.jpg" alt="Отзыв 5">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz6.jpg" alt="Отзыв 6">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-card">
-                            <img src="img/otz7.jpg" alt="Отзыв 7">
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <span class="section-label">КОНТАКТЫ</span>
-                <h2 class="section-title">ГОТОВЫ СОЗДАТЬ ПРАЗДНИК?</h2>
-                <p class="section-subtitle">Напишите нам в любой удобный мессенджер — мы ответим в течение 5 минут!</p>
-                <div class="phone-display">+7 (980) 999-88-88</div>
-                <div class="social-buttons">
-                    <a href="https://wa.me/79807465454" target="_blank" class="social-btn whatsapp">
-                        <span>📱</span> WHATSAPP
-                    </a>
-                    <a href="https://t.me/+79807465442" target="_blank" class="social-btn telegram">
-                        <span>✈️</span> TELEGRAM
-                    </a>
+                <div>
+                    <h4 class="heading-font footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>(С) 2025 ЖИВЫЕ СКАЗКИ. ВСЕ ПРАВА ЗАЩИЩЕНЫ. ЯРОСЛАВЛЬ</p>
+            <div class="footer-bottom">
+                <p>© 2026 MailFlow. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div id="image-modal" class="modal">
-        <span class="close-modal">X</span>
-        <img class="modal-content" id="modal-image">
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Snow animation
-        const snowContainer = document.getElementById('snow-container');
-        const snowCount = 50;
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            const size = Math.random() * 3 + 1;
-            snowflake.style.width = `${size}px`;
-            snowflake.style.height = `${size}px`;
-            snowflake.style.left = `${Math.random() * 100}vw`;
-            const duration = Math.random() * 15 + 10;
-            const delay = Math.random() * -15;
-            snowflake.style.animationDuration = `${duration}s`;
-            snowflake.style.animationDelay = `${delay}s`;
-            snowContainer.appendChild(snowflake);
-            snowflake.addEventListener('animationiteration', () => {
-                snowflake.style.left = `${Math.random() * 100}vw`;
-            });
-        }
-        for (let i = 0; i < snowCount; i++) {
-            createSnowflake();
-        }
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.textContent = navMenu.classList.contains('active') ? '[ЗАКРЫТЬ]' : '[МЕНЮ]';
-        });
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.textContent = '[МЕНЮ]';
-            });
-        });
-
-        // Image modal
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-image');
-        const closeModal = document.querySelector('.close-modal');
-        const zoomableImages = document.querySelectorAll('.zoomable');
-        zoomableImages.forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
+        // FAQ Toggle
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            // Close all other FAQs
+            for (let i = 0; i < 5; i++) {
+                if (i !== index) {
+                    document.getElementById(`faq-answer-${i}`).classList.remove('active');
+                    document.getElementById(`faq-icon-${i}`).classList.remove('active');
+                }
             }
-        });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
 
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    setTimeout(() => {
-                        const headerHeight = document.querySelector('.header').offsetHeight;
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }, navMenu.classList.contains('active') ? 400 : 0);
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-        
-        // JS для бегущей строки (дублирование контента)
-        const marqueeContent = document.querySelector('.marquee-content');
-        if (marqueeContent) {
-            marqueeContent.innerHTML += marqueeContent.innerHTML;
-        }
 
-        // Swiper initialization (Возвращаем)
-        const swiper = new Swiper('.reviews-slider', {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 20,
-            autoplay: { delay: 4000, disableOnInteraction: false, },
-            pagination: { el: '.swiper-pagination', clickable: true, },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
-            breakpoints: {
-                768: { slidesPerView: 2, },
-                1024: { slidesPerView: 3, },
-            }
+        // Pricing card hover effect
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        pricingCards.forEach(card => {
+            const btn = card.querySelector('.pricing-btn');
+            const isPopular = card.style.borderColor === 'rgb(99, 102, 241)';
+            const accentColor = isPopular ? '#6366f1' : '#c4ff00';
+            
+            card.addEventListener('mouseenter', () => {
+                if (btn && !isPopular) {
+                    btn.style.background = accentColor;
+                    btn.style.color = '#000000';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (btn && !isPopular) {
+                    btn.style.background = 'var(--glass-bg)';
+                    btn.style.color = 'var(--text-primary)';
+                }
+            });
         });
-
     </script>
 </body>
 </html>
